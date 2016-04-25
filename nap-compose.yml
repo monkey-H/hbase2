@@ -1,5 +1,5 @@
 master:
-    image: docker.iwanna.xyz:5000/hmonkey/hbase_master:v2
+    image: docker.iwanna.xyz:5000/hmonkey/mpi:v1
     command: /bin/bash -c "service ssh start"
     environment:
       - JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
@@ -9,7 +9,7 @@ master:
       - HADOOP_OPTS=-Djava.library.path=/root/hadoop-2.3.0/lib
       - CLASSPATH=/usr/lib/jvm/java-7-openjdk-amd64/lib:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib
 slave1:
-    image: docker.iwanna.xyz:5000/hmonkey/hbase_slave:v2
+    image: docker.iwanna.xyz:5000/hmonkey/mpi:v1
     command: /bin/bash -c "sed -i \"s/server171/{{master}}/g\" /root/hadoop-2.3.0/etc/hadoop/slaves"
     environment:
       - JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
@@ -19,27 +19,7 @@ slave1:
       - HADOOP_OPTS=-Djava.library.path=/root/hadoop-2.3.0/lib
       - CLASSPATH=/usr/lib/jvm/java-7-openjdk-amd64/lib:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib
 slave2:
-    image: docker.iwanna.xyz:5000/hmonkey/hbase_slave:v2
-    command: /bin/bash -c "sed -i \"s/server171/{{master}}/g\" /root/hadoop-2.3.0/etc/hadoop/slaves "
-    environment:
-      - JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-      - PATH=$PATH:$JAVA_HOME/bin
-      - HADOOP_HOME=/root/hadoop-2.3.0
-      - HADOOP_COMMON_LIB_NATIVE_DIR=/root/hadoop-2.3.0/lib/native
-      - HADOOP_OPTS=-Djava.library.path=/root/hadoop-2.3.0/lib
-      - CLASSPATH=/usr/lib/jvm/java-7-openjdk-amd64/lib:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib
-slave3:
-    image: docker.iwanna.xyz:5000/hmonkey/hbase_slave:v2
-    command: /bin/bash -c "sed -i \"s/server171/{{master}}/g\" /root/hadoop-2.3.0/etc/hadoop/slaves"
-    environment:
-      - JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-      - PATH=$PATH:$JAVA_HOME/bin
-      - HADOOP_HOME=/root/hadoop-2.3.0
-      - HADOOP_COMMON_LIB_NATIVE_DIR=/root/hadoop-2.3.0/lib/native
-      - HADOOP_OPTS=-Djava.library.path=/root/hadoop-2.3.0/lib
-      - CLASSPATH=/usr/lib/jvm/java-7-openjdk-amd64/lib:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib
-slave4:
-    image: docker.iwanna.xyz:5000/hmonkey/hbase_slave:v2
+    image: docker.iwanna.xyz:5000/hmonkey/mpi:v1
     command: /bin/bash -c "sed -i \"s/server171/{{master}}/g\" /root/hadoop-2.3.0/etc/hadoop/slaves "
     environment:
       - JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
