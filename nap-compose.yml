@@ -1,6 +1,6 @@
 master:
     image: docker.iwanna.xyz:5000/hmonkey/hbase_master:v2
-    command: '/bin/bash -c "service ssh start"'
+    command: /bin/bash -c "service ssh start"
     environment:
       - JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
       - PATH=$PATH:$JAVA_HOME/bin
@@ -10,7 +10,7 @@ master:
       - CLASSPATH=/usr/lib/jvm/java-7-openjdk-amd64/lib:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib
 slave1:
     image: docker.iwanna.xyz:5000/hmonkey/hbase_slave:v2
-    command: '/bin/bash -c "sed -i \"s/server171/{{master}}/g\" /root/hadoop-2.3.0/etc/hadoop/slaves"'
+    command: /bin/bash -c "sed -i \"s/server171/{{master}}/g\" /root/hadoop-2.3.0/etc/hadoop/slaves"
     environment:
       - JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
       - PATH=$PATH:$JAVA_HOME/bin
@@ -20,7 +20,7 @@ slave1:
       - CLASSPATH=/usr/lib/jvm/java-7-openjdk-amd64/lib:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib
 slave2:
     image: docker.iwanna.xyz:5000/hmonkey/hbase_slave:v2
-    command: '/bin/bash -c "sed -i \"s/server171/{{master}}/g\" /root/hadoop-2.3.0/etc/hadoop/slaves "'
+    command: /bin/bash -c "sed -i \"s/server171/{{master}}/g\" /root/hadoop-2.3.0/etc/hadoop/slaves "
     environment:
       - JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
       - PATH=$PATH:$JAVA_HOME/bin
@@ -30,7 +30,7 @@ slave2:
       - CLASSPATH=/usr/lib/jvm/java-7-openjdk-amd64/lib:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib
 slave3:
     image: docker.iwanna.xyz:5000/hmonkey/hbase_slave:v2
-    command: '/bin/bash -c "sed -i \"s/server171/{{master}}/g\" /root/hadoop-2.3.0/etc/hadoop/slaves"'
+    command: /bin/bash -c "sed -i \"s/server171/{{master}}/g\" /root/hadoop-2.3.0/etc/hadoop/slaves"
     environment:
       - JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
       - PATH=$PATH:$JAVA_HOME/bin
@@ -40,7 +40,7 @@ slave3:
       - CLASSPATH=/usr/lib/jvm/java-7-openjdk-amd64/lib:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib
 slave4:
     image: docker.iwanna.xyz:5000/hmonkey/hbase_slave:v2
-    command: '/bin/bash -c "sed -i \"s/server171/{{master}}/g\" /root/hadoop-2.3.0/etc/hadoop/slaves "'
+    command: /bin/bash -c "sed -i \"s/server171/{{master}}/g\" /root/hadoop-2.3.0/etc/hadoop/slaves "
     environment:
       - JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
       - PATH=$PATH:$JAVA_HOME/bin
